@@ -1,0 +1,9 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/path/to/your/image.jpg");
+  background-size: cover;
+  background-position: center;
+}
