@@ -7,7 +7,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   background-color: #f7f7f7;
-  position: relative;
+  position: relative; // wichtig für das absolute Positionieren von Kindern
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -21,7 +21,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 50px;
+  padding: 50px;
   @media (max-width: 768px) {
     align-items: center;
     padding: 0 10px;
@@ -76,15 +76,16 @@ const Button = styled.button`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   flex: 1;
   display: flex;
-  justify-content: space-between; // legt den Raum zwischen den Elementen fest
-  align-items: flex-start; // zentriert die Elemente vertikal
-  margin-top: auto;
+  justify-content: space-between;
+  align-items: flex-end; // von 'flex-start' zu 'flex-end' geändert
+  height: 100vh; // oder eine andere geeignete Höhe
   @media (max-width: 768px) {
     justify-content: center;
     align-items: center;
-    flex-direction: column; // stellt die Elemente untereinander auf kleineren Bildschirmen dar
+    flex-direction: column;
   }
 `;
 
@@ -98,8 +99,8 @@ const Image = styled.img`
 
 const BackButton = styled(Button)`
   position: absolute;
-  bottom: -80px;
-  right: 10px;
+  bottom: 50px;
+  transform: translateX(-10%);
 `;
 
 const AdditionalText = styled.div`
@@ -108,12 +109,53 @@ const AdditionalText = styled.div`
   font-family: Arial;
   font-weight: 900;
   margin-left: 20px;
-  width: 70%;
-  position: relative; // Hinzufügen dieser Zeile
+  width: 50%;
   @media (max-width: 768px) {
     margin-top: 20px;
     text-align: center;
     width: 100%;
+  }
+`;
+
+const ContentContainer = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center; // Von 'stretch' zu 'center' geändert
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+`;
+
+const AdditionalImageContainer = styled.div`
+  display: flex;
+  justify-content: flex-start; // Von 'center' zu 'flex-start' geändert
+  align-items: flex-start; // Von 'center' zu 'flex-start' geändert
+  height: 20vh;
+  width: %; // Ändern Sie die Breite nach Bedarf
+  @media (max-width: 768px) {
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const AdditionalImage = styled.img`
+  max-width: 1200%;
+  height: auto;
+  @media (min-width: 769px) {
+    max-height: 20vh; // Ändern Sie die Höhe nach Bedarf
   }
 `;
 
@@ -167,18 +209,26 @@ const SecondSection = () => {
             </Button>
           </ButtonContainer>
         </TextContainer>
-        <ImageContainer>
-          <Image src="/diren.png" alt="Image" />
-          {isShifted && (
-            <AdditionalText>
-              {displayText}
+        <ContentContainer>
+          <ImageContainer>
+            <Image src="/diren.png" alt="Image" />
+            {isShifted && (
               <BackButton onClick={handleBackButtonClick}>
-                {" "}
                 {"\u2190"}Zurück
               </BackButton>
-            </AdditionalText>
+            )}
+          </ImageContainer>
+          {isShifted && (
+            <>
+              <InfoContainer>
+                <AdditionalText>{displayText}</AdditionalText>
+              </InfoContainer>
+              <AdditionalImageContainer>
+                <AdditionalImage src="/duft.png" alt="New Image" />
+              </AdditionalImageContainer>
+            </>
           )}
-        </ImageContainer>
+        </ContentContainer>
       </Section>
     </>
   );

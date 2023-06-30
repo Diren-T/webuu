@@ -10,6 +10,39 @@ const Section = styled.section`
   background-color: #030305;
   background-attachment: fixed;
   overflow: auto; // Fügt Scrollbars hinzu, wenn der Inhalt zu groß ist
+  position: relative;
+`;
+
+const SquaresBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const Square = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  animation: squareAnimation 1.5s infinite;
+  opacity: 0; /* Füge diese Zeile hinzu */
+
+  @keyframes squareAnimation {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -89,9 +122,42 @@ const Title = styled.h3`
   }
 `;
 
+const generateRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const generateRandomSquares = () => {
+  const squares = [];
+  const numberOfSquares = 100; // Anzahl der zu generierenden Quadrate
+
+  for (let i = 0; i < numberOfSquares; i++) {
+    const randomTop = generateRandomNumber(0, 100);
+    const randomLeft = generateRandomNumber(0, 100);
+    const randomDelay = generateRandomNumber(0, 2000);
+    const randomDuration = generateRandomNumber(2000, 4000);
+
+    squares.push(
+      <Square
+        key={i}
+        style={{
+          top: `${randomTop}%`,
+          left: `${randomLeft}%`,
+          animationDelay: `${randomDelay}ms`,
+          animationDuration: `${randomDuration}ms`,
+        }}
+      />
+    );
+  }
+
+  return squares;
+};
+
 const ThirdSection = () => {
+  const squares = generateRandomSquares();
+
   return (
     <Section id="section3">
+      <SquaresBackground>{squares}</SquaresBackground>
       <ContentContainer>
         <ContentItem>
           <TitleContainer className="title-container">
