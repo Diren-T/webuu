@@ -1,5 +1,6 @@
 import React from "react";
 import { Element, Link } from "react-scroll";
+import { Helmet } from "react-helmet"; // Importiere Helmet aus react-helmet
 import Header from "../components/Header";
 import FirstSection from "../components/FirstSection";
 import SecondSection from "../components/SecondSection";
@@ -17,6 +18,10 @@ const Container = styled.div`
 const HomePage = () => {
   return (
     <Container>
+      <Helmet>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />{" "}
+        {/* Füge diese Zeile hinzu */}
+      </Helmet>
       <Header />
       <Element name="section1">
         <FirstSection />

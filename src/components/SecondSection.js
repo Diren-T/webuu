@@ -24,7 +24,7 @@ const TextContainer = styled.div`
   padding: 50px;
   @media (max-width: 768px) {
     align-items: center;
-    padding: 0 10px;
+    padding: 10px;
   }
 `;
 

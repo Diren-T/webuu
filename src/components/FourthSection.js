@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const MainSection = styled.section`
@@ -8,6 +8,7 @@ const MainSection = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding: 50px;
 `;
 
 const ContentSection = styled.section`
@@ -114,15 +115,9 @@ const TextField = styled.p`
   }
 `;
 
-const CustomIconContainer = styled.div`
+const IconContainer = styled.div`
   display: flex;
   align-items: flex-start;
-`;
-
-const Icon = styled.img`
-  width: 40px;
-  height: 30px;
-  margin-right: 20px;
 `;
 
 const CarouselContainer = styled.div`
@@ -146,7 +141,7 @@ const Slide = styled.div`
 `;
 
 const Image = styled.img`
-  width: 50%;
+  width: 80%;
   height: auto;
   max-width: 800px;
 
@@ -178,6 +173,12 @@ const SliderButton = styled.button`
     `
     background: white;
   `}
+`;
+
+const Icon = styled.img`
+  width: 50px; /* Ändere die Breite auf den gewünschten Wert */
+  height: 50px; /* Ändere die Höhe auf den gewünschten Wert */
+  margin-right: 20px;
 `;
 
 const ImageCarousel = ({ images }) => {
@@ -234,33 +235,15 @@ const FourthSection = () => {
     }
   };
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "ArrowLeft" && currentPage > 0) {
-        setCurrentPage((currentPage) => currentPage - 1);
-      }
-      if (event.key === "ArrowRight" && currentPage < 3) {
-        setCurrentPage((currentPage) => currentPage + 1);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [currentPage]);
-
   const renderIcons = (icons) => {
     return (
-      <CustomIconContainer>
+      <IconContainer>
         {icons.map((icon, index) => (
           <Icon src={icon} alt={`Icon ${index + 1}`} key={index} />
         ))}
-      </CustomIconContainer>
+      </IconContainer>
     );
   };
-
   const pages = [
     {
       title: "Routix KI Reiseplaner",
@@ -281,7 +264,7 @@ const FourthSection = () => {
 
   return (
     <MainSection id="section4">
-      <ContentSection currentPage={currentPage}>
+      <ContentSection translateX={-currentPage * 100}>
         {pages.map((page, index) => (
           <PageContent key={index} currentPage={currentPage === index}>
             <ColumnContent>

@@ -8,6 +8,14 @@ const Section = styled.section`
   align-items: center;
 `;
 
+const FirstSection = styled(Section)`
+  /* Gemeinsame Hintergrundstile für die erste und zweite Section */
+  background-image: url("/path/to/your/image.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: right;
+`;
+
 const SectionText1 = styled.p`
   display: flex;
   width: 50%;
@@ -63,9 +71,9 @@ const SectionText2Subtext = styled.span`
   }
 `;
 
-const FirstSection = () => {
+const FirstSectionComponent = () => {
   return (
-    <Section id="section1">
+    <FirstSection id="section1">
       <SectionText1>
         Mein
         <br />
@@ -81,8 +89,8 @@ const FirstSection = () => {
           <br /> Design
         </SectionText2Subtext>
       </SectionText2>
-    </Section>
+    </FirstSection>
   );
 };
 
-export default FirstSection;
+export default FirstSectionComponent;
