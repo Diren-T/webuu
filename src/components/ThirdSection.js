@@ -5,6 +5,7 @@ const Section = styled.section`
   min-height: 100vh;
   display: flex;
   justify-content: center;
+
   align-items: center;
   background-color: #030305;
   background-attachment: fixed;
@@ -14,6 +15,7 @@ const Section = styled.section`
 
 const SquaresBackground = styled.div`
   position: absolute;
+
   top: 0;
   left: 0;
   width: 100%;

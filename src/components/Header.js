@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.header`
   padding: 1rem;
+  z-index: 10;
   width: 100%;
 `;
 

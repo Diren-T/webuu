@@ -9,6 +9,10 @@ const MainSection = styled.section`
   justify-content: flex-start;
   align-items: center;
   padding: 50px;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const ContentSection = styled.section`
@@ -244,6 +248,7 @@ const FourthSection = () => {
       </IconContainer>
     );
   };
+
   const pages = [
     {
       title: "Routix KI Reiseplaner",
@@ -264,7 +269,7 @@ const FourthSection = () => {
 
   return (
     <MainSection id="section4">
-      <ContentSection translateX={-currentPage * 100}>
+      <ContentSection currentPage={currentPage}>
         {pages.map((page, index) => (
           <PageContent key={index} currentPage={currentPage === index}>
             <ColumnContent>
