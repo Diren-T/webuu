@@ -55,7 +55,7 @@ const SectionText1 = styled.p`
     font-size: 10vw;
     width: 95%;
     margin-top: 5vh;
-    margin-bottom: 1vh;
+    margin-bottom: vh;
     text-align: center;
   }
 
@@ -98,7 +98,7 @@ const SectionText2 = styled.p`
 
   @media screen and (max-width: 480px) {
     font-size: 6vw;
-    margin-top: 2vh;
+    margin-top: 3vh;
     margin-left: 0;
     align-items: center;
     text-align: center;

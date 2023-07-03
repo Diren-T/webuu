@@ -21,7 +21,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 50px;
+  padding: px;
   @media (max-width: 768px) {
     align-items: center;
     padding: 10px;

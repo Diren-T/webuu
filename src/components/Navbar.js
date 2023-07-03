@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled, { css, keyframes } from "styled-components";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { MdClose } from "react-icons/md";
+import React from "react";
+import styled from "styled-components";
 
 const Nav = styled.nav`
   position: fixed;
@@ -9,91 +7,61 @@ const Nav = styled.nav`
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem;
-  background-color: transparent;
-  z-index: 10000; // high z-index to make sure it's above everything else
+  background-color: #f7f7f7;
+  z-index: 10000;
+  padding: 2px;
 `;
 
-const fadeIn = keyframes`
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
+const NavLinkContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 800px; /* Anpassung der maximalen Breite des Containers */
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const NavLink = styled.a`
   color: black;
   text-decoration: none;
   cursor: pointer;
+  font-size: 20px;
   font-family: "Arial Black", Arial, sans-serif;
   font-weight: bold;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.8rem;
 
   &:hover {
     color: #e0e258;
   }
 
   @media (max-width: 768px) {
-    font-size: 10px; // smaller font size for smaller screens
-    opacity: 0;
-    animation: ${(props) =>
-      props.isOpen &&
-      css`
-        ${fadeIn} 0.5s ease forwards ${props.index / 4 + 0.3}s
-      `};
-    display: block;
-  }
-`;
+    font-size: 12px;
 
-const MenuIcon = styled.div`
-  display: none;
-
-  @media (max-width: 768px) {
-    display: block;
+    margin: 0.1rem 0rem;
   }
 `;
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth", block: "start" });
-    setIsOpen(false);
   };
 
   return (
     <Nav>
-      <MenuIcon onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <MdClose size={30} /> : <GiHamburgerMenu size={30} />}
-      </MenuIcon>
-      <NavLink
-        isOpen={isOpen}
-        index={1}
-        onClick={() => scrollToSection("section2")}
-      >
-        What I Do
-      </NavLink>
-      <NavLink
-        isOpen={isOpen}
-        index={2}
-        onClick={() => scrollToSection("section3")}
-      >
-        Motivation
-      </NavLink>
-      <NavLink
-        isOpen={isOpen}
-        index={3}
-        onClick={() => scrollToSection("section4")}
-      >
-        Projects
-      </NavLink>
-      <NavLink
-        isOpen={isOpen}
-        index={4}
-        onClick={() => scrollToSection("section5")}
-      >
-        Contact
-      </NavLink>
+      <NavLinkContainer>
+        <NavLink onClick={() => scrollToSection("section2")}>DIREN</NavLink>
+        <NavLink onClick={() => scrollToSection("section3")}>
+          MOTIVATION
+        </NavLink>
+        <NavLink onClick={() => scrollToSection("section4")}>PROJEKTE</NavLink>
+        <NavLink onClick={() => scrollToSection("section5")}>KONTAKT</NavLink>
+      </NavLinkContainer>
     </Nav>
   );
 };
