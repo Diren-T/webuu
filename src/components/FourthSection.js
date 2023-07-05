@@ -110,24 +110,36 @@ const SubTitle = styled.h2`
 `;
 
 const TextField = styled.p`
-  font-family: "Arial Black", sans-serif;
+  font-family: "Arial Regular", sans-serif;
   text-align: left;
   margin-bottom: 20px;
+  max-width: 500px;
 
   @media screen and (max-width: 768px) {
     margin-bottom: 10px;
+    max-width: 300px; /* Hier kann die gewünschte Breite angepasst werden */
   }
 `;
 
 const IconContainer = styled.div`
   display: flex;
   align-items: flex-start;
+  margin-top: 100px; /* Hier kann der gewünschte Abstand nach unten angepasst werhttp://localhost:3000/12routix.svgden */
+
+  @media screen and (max-width: 768px) {
+    margin-top: 10px; /* Hier kann der gewünschte Abstand nach unten angepasst werden */
+  }
 `;
 
 const CarouselContainer = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
+  max-width: 800px; /* Hier kann die maximale Breite des Karussells angepasst werden */
+
+  @media screen and (max-width: 768px) {
+    max-width: 100%; /* Das Karussell füllt den verfügbaren Platz auf kleineren Bildschirmen */
+  }
 `;
 
 const Carousel = styled.div`
@@ -145,12 +157,16 @@ const Slide = styled.div`
 `;
 
 const Image = styled.img`
-  width: 80%;
+  width: 100%;
   height: auto;
-  max-width: 800px;
+  max-width: 100%; /* Das Bild passt sich der Größe des Karussells an */
 
-  @media screen and (max-width: 1200px) {
-    max-width: 100%;
+  @media screen and (min-width: 321px) {
+    max-width: 50%; /* Hier kann die gewünschte Breite des Bildes auf kleineren Bildschirmen angepasst werden */
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 100%; /* Das Bild passt sich wieder der vollen Breite des Karussells an */
   }
 `;
 
@@ -180,9 +196,15 @@ const SliderButton = styled.button`
 `;
 
 const Icon = styled.img`
-  width: 50px; /* Ändere die Breite auf den gewünschten Wert */
-  height: 50px; /* Ändere die Höhe auf den gewünschten Wert */
+  width: 39px; /* Ändere die Breite auf den gewünschten Wert */
+  height: 30px; /* Ändere die Höhe auf den gewünschten Wert */
   margin-right: 20px;
+
+  @media screen and (max-width: 768px) {
+    width: 20px; /* Hier kann die gewünschte Breite angepasst werden */
+    height: 20px; /* Hier kann die gewünschte Höhe angepasst werden */
+    margin-right: 10px;
+  }
 `;
 
 const ImageCarousel = ({ images }) => {
@@ -255,7 +277,21 @@ const FourthSection = () => {
       subTitle: "UX RESEARCH UI INTERFACE DESIGNE",
       text: "Dieses Projekt zielte darauf ab, eine innovative, KI-basierte Reiseplaner-App zu entwickeln, die es Nutzern ermöglicht, individuelle Reiserouten basierend auf ihren Interessen und ihrem Zeitplan zu erstellen. Ziel war es, den Prozess der Reiseplanung zu vereinfachen und gleichzeitig die Umwelt zu schonen, indem unnötige Reisen vermieden werden.",
       icons: ["/fig.svg", "/mj.svg", "/ps.svg", "/ai.svg"],
-      images: ["/diren.png", "/duft.png", "/diren.png"],
+      images: [
+        "/1routix.svg",
+        "/2routix.svg",
+        "/3routix.svg",
+        "/4routix.svg",
+        "/5routix.svg",
+        "/6routix.svg",
+        "/7routix.svg",
+        "/8routix.svg",
+        "/9routix.svg",
+        "/10routix.svg",
+        "/11routix.svg",
+        "/12routix.svg",
+        "/13routix.svg",
+      ],
     },
     // ... Weitere Seiten
     {

@@ -5,7 +5,6 @@ const Section = styled.section`
   min-height: 100vh;
   display: flex;
   justify-content: center;
-
   align-items: center;
   background-color: #030305;
   background-attachment: fixed;
@@ -15,7 +14,6 @@ const Section = styled.section`
 
 const SquaresBackground = styled.div`
   position: absolute;
-
   top: 0;
   left: 0;
   width: 100%;
@@ -51,10 +49,14 @@ const ContentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 100px;
+  gap: 50px;
   max-width: 1200px;
   padding: 20px;
   position: relative;
+
+  @media (max-width: 768px) {
+    gap: 30px;
+  }
 `;
 
 const Description = styled.p`
@@ -65,6 +67,10 @@ const Description = styled.p`
   font-family: Arial Black;
   transition: all 0.3s ease;
   transform: translateY(10px);
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ContentItem = styled.div`
@@ -98,6 +104,11 @@ const ContentItem = styled.div`
 
   @media (min-width: 992px) {
     width: 24%;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -137,7 +148,7 @@ const generateRandomNumber = (min, max) => {
 
 const generateRandomSquares = () => {
   const squares = [];
-  const numberOfSquares = 300;
+  const numberOfSquares = 80;
 
   for (let i = 0; i < numberOfSquares; i++) {
     const randomTop = generateRandomNumber(0, 100);

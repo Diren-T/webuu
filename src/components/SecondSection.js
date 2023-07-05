@@ -31,10 +31,7 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 10px;
-  @media (min-width: 569px) {
-    align-items: flex-start;
-    padding: 0 50px;
-  }
+  position: relative; /* Füge diese Zeile hinzu */
 `;
 
 const Title = styled.h2`
@@ -109,10 +106,10 @@ const Image = styled.img`
     max-height: 90vh;
   }
   @media (max-width: 320px) {
-    max-height: 150px; /* Bildgröße für das iPhone SE */
+    max-height: 100px; /* Reduzierte Bildgröße für das iPhone SE */
   }
   @media (min-width: 321px) and (max-width: 375px) {
-    max-height: 200px; /* Bildgröße für andere mobile Geräte */
+    max-height: 100%; /* Bildgröße für andere mobile Geräte */
   }
   @media (min-width: 376px) and (max-width: 768px) {
     max-height: unset; /* Bildgröße für Tablets und kleinere Desktops */
@@ -123,6 +120,12 @@ const BackButton = styled(Button)`
   position: absolute;
   bottom: -70px;
   transform: translateX(-10%);
+
+  @media (min-width: 569px) {
+    bottom: auto;
+    left: -70px;
+    transform: none;
+  }
 `;
 
 const AdditionalText = styled.div`
@@ -238,12 +241,12 @@ const SecondSection = () => {
               Kunst und UX {"\u2192"}
             </Button>
           </ButtonContainer>
-          {isShifted && (
-            <BackButton onClick={handleBackButtonClick}>
-              {"\u2190"}Zurück
-            </BackButton>
-          )}
         </TextContainer>
+        {isShifted && (
+          <BackButton onClick={handleBackButtonClick}>
+            {"\u2190"}Zurück
+          </BackButton>
+        )}
         <ContentContainer>
           <ImageContainer>
             <Image src="/diren.png" alt="Image" />
