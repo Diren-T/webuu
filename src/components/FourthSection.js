@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const MainSection = styled.section`
@@ -9,6 +9,8 @@ const MainSection = styled.section`
   justify-content: flex-start;
   align-items: center;
   padding: 50px;
+  max-width: 2000px; // Begrenzen der maximalen Breite der Hauptsektion
+  margin: 0 auto; // Zentrieren der Hauptsektion
 
   @media screen and (max-width: 768px) {
     padding: 20px;
@@ -16,13 +18,17 @@ const MainSection = styled.section`
 `;
 
 const ContentSection = styled.section`
+  height: auto;
   min-height: calc(100vh - 70px);
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   transition: transform 0.5s ease;
-  transform: translateX(-${(props) => props.currentPage * 100}%);
+  transform: translateX(
+    -${(props) => (props.currentPage === 0 ? "0%" : props.currentPage * -100)}%
+  );
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -37,36 +43,36 @@ const ButtonContainer = styled.div`
   width: 100%;
   padding: 20px;
   position: absolute;
-  bottom: 60px;
+  bottom: 200px; // Setzen Sie den Button etwas höher
 
   @media screen and (max-width: 768px) {
     position: static;
     margin-top: 20px;
+    bottom: auto; // Da die Position auf "static" gesetzt ist, wird "bottom" ignoriert
   }
 `;
 
 const PreviousButton = styled.button`
   padding: 10px;
-  font-size: 16px;
-  margin-right: 20px;
+  font-size: 12px;
   background: none;
   border: none;
   cursor: pointer;
 
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
+  @media (max-width: 320px) {
+    margin-right: 5px;
   }
 `;
 
 const NextButton = styled.button`
   padding: 10px;
-  font-size: 16px;
+  font-size: 12px;
   background: none;
   border: none;
   cursor: pointer;
 
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
+  @media (max-width: 320px) {
+    margin-left: 5px;
   }
 `;
 
@@ -131,7 +137,7 @@ const SubTitle = styled.h2`
   }
 
   @media screen and (min-width: 1024px) {
-    font-size: 1.2em;
+    font-size: 3em;
     margin-bottom: 10px;
     margin-left: -30px;
   }
@@ -228,6 +234,41 @@ const Image = styled.img`
     max-width: 100%; /* Das Bild passt sich wieder der vollen Breite des Karussells an */
   }
 `;
+const PreviousImage = styled.img`
+  width: 60px;
+  height: 60px;
+  margin-right: 20px; /* Hier kannst du den gewünschten Abstand einstellen */
+
+  @media screen and (min-width: 321px) {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Hier kannst du den gewünschten Abstand für kleinere Bildschirme einstellen */
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px; /* Hier kannst du den gewünschten Abstand für größere Bildschirme einstellen */
+  }
+`;
+
+const NextImage = styled.img`
+  width: 60px;
+  height: 60px;
+  margin-left: 20px; /* Hier kannst du den gewünschten Abstand einstellen */
+
+  @media screen and (min-width: 321px) {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px; /* Hier kannst du den gewünschten Abstand für kleinere Bildschirme einstellen */
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px; /* Hier kannst du den gewünschten Abstand für größere Bildschirme einstellen */
+  }
+`;
 
 const SliderButtonContainer = styled.div`
   display: flex;
@@ -258,6 +299,68 @@ const Icon = styled.img`
   }
 `;
 
+const PreviousButtonor = styled.button`
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease;
+
+  @media (max-width: 320px) {
+    font-size: 0.1rem;
+  }
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+
+  /* Additional styling */
+  padding: 10px;
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 320px) {
+    margin-right: 5px;
+  }
+`;
+
+const NextButtonor = styled.button`
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease;
+
+  @media (max-width: 320px) {
+    font-size: 0.1rem;
+  }
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+
+  /* Additional styling */
+  padding: 10px;
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 320px) {
+    margin-left: 5px;
+  }
+`;
+
 const ImageCarousel = ({ images }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -272,20 +375,35 @@ const ImageCarousel = ({ images }) => {
       prevSlide === 0 ? images.length - 1 : prevSlide - 1
     );
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNextSlide();
+    }, 9000); // Ändere den Zeitabstand hier nach Bedarf (in Millisekunden)
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <CarouselContainer>
       <Carousel slideCount={images.length} currentSlide={currentSlide}>
         {images.map((image, index) => (
           <Slide key={index} slideCount={images.length}>
-            <Image src={image} alt={`Slide ${index + 1}`} />
+            <Image
+              src={image}
+              alt={`Slide ${index + 1}`}
+              width={1000}
+              height={600}
+            />
           </Slide>
         ))}
       </Carousel>
       <SliderButtonContainer>
-        <PreviousButton onClick={handlePreviousSlide}>◀️</PreviousButton>
-
-        <NextButton onClick={handleNextSlide}>▶️</NextButton>
+        <PreviousButton onClick={handlePreviousSlide}>
+          <PreviousImage src="/previous.svg" alt="Previous" />
+        </PreviousButton>
+        <NextButton onClick={handleNextSlide}>
+          <NextImage src="/nextslider.svg" alt="Next" />
+        </NextButton>
       </SliderButtonContainer>
     </CarouselContainer>
   );
@@ -343,7 +461,12 @@ const FourthSection = () => {
       subTitle: "UX RESEARCH UI INTERFACE DESIGNE",
       text: "Dieses Projekt zielte darauf ab, eine innovative, KI-basierte Reiseplaner-App zu entwickeln, die es Nutzern ermöglicht, individuelle Reiserouten basierend auf ihren Interessen und ihrem Zeitplan zu erstellen. Ziel war es, den Prozess der Reiseplanung zu vereinfachen und gleichzeitig die Umwelt zu schonen, indem unnötige Reisen vermieden werden.",
       icons: ["icon4.svg", "icon5.svg", "icon6.svg"],
-      images: ["/duft.png", "/duft.png", "/diren.png"],
+      images: [
+        "/10routix.svg",
+        "/11routix.svg",
+        "/12routix.svg",
+        "/13routix.svg",
+      ],
     },
   ];
 
@@ -371,12 +494,14 @@ const FourthSection = () => {
 
       <ButtonContainer>
         {currentPage > 0 && (
-          <PreviousButton onClick={handlePreviousPage}>Zurück</PreviousButton>
+          <PreviousButtonor onClick={handlePreviousPage}>
+            Zurück
+          </PreviousButtonor>
         )}
         {currentPage < 3 ? (
           <NextButton onClick={handleNextPage}>Weiter</NextButton>
         ) : (
-          <NextButton disabled>Weiter</NextButton>
+          <NextButtonor disabled>Weiter</NextButtonor>
         )}
       </ButtonContainer>
     </MainSection>

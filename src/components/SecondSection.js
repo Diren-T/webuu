@@ -31,7 +31,10 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 10px;
-  position: relative; /* Füge diese Zeile hinzu */
+  @media (min-width: 569px) {
+    align-items: flex-start;
+    padding: 0 50px;
+  }
 `;
 
 const Title = styled.h2`
