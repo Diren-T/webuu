@@ -22,7 +22,7 @@ const ContentSection = styled.section`
   justify-content: flex-start;
   align-items: flex-start;
   transition: transform 0.5s ease;
-  transform: translateX(${(props) => -props.currentPage * 100}%);
+  transform: translateX(-${(props) => props.currentPage * 100}%);
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -52,6 +52,10 @@ const PreviousButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const NextButton = styled.button`
@@ -60,6 +64,10 @@ const NextButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const PageContent = styled.article`
@@ -74,38 +82,63 @@ const PageContent = styled.article`
 const ColumnContent = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 150px;
+  grid-gap: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-    margin-top: 80px;
+    margin-top: 0px;
+  }
+  @media screen and (min-width: 320px) {
+    grid-gap: 20px;
   }
 `;
 
 const Title = styled.h1`
   font-family: "Arial Black", sans-serif;
   text-align: left;
-  font-size: 2em;
-  margin-bottom: 60px;
+  font-size: 5em;
+  margin-bottom: 10px;
 
   @media screen and (max-width: 768px) {
     font-size: 1.5em;
     margin-bottom: 40px;
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 1.2em;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 6em;
+    margin-bottom: 20px;
+    margin-left: -50px;
   }
 `;
 
 const SubTitle = styled.h2`
   font-family: "Arial Black", sans-serif;
   text-align: left;
-  font-size: 1.5em;
-  margin-bottom: 60px;
+  font-size: 1em;
+  margin-bottom: 3px;
 
   @media screen and (max-width: 768px) {
     font-size: 1.2em;
     margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    margin-left: -30px;
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 0.5em;
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
 `;
 
@@ -117,17 +150,35 @@ const TextField = styled.p`
 
   @media screen and (max-width: 768px) {
     margin-bottom: 10px;
-    max-width: 300px; /* Hier kann die gewünschte Breite angepasst werden */
+    max-width: 300px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 1.2em;
+    margin-left: -30px;
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 1em;
+    margin-left: 10px;
   }
 `;
 
 const IconContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-top: 100px; /* Hier kann der gewünschte Abstand nach unten angepasst werhttp://localhost:3000/12routix.svgden */
+  margin-top: 100px;
 
   @media screen and (max-width: 768px) {
-    margin-top: 10px; /* Hier kann der gewünschte Abstand nach unten angepasst werden */
+    margin-top: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-top: 80px;
+    margin-left: -50px;
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 1.2em;
+    margin-left: 10px;
   }
 `;
 
@@ -135,10 +186,18 @@ const CarouselContainer = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  max-width: 800px; /* Hier kann die maximale Breite des Karussells angepasst werden */
+  margin-left: 0;
+  margin: 0 auto; // Zentrierung des Karussells
 
   @media screen and (max-width: 768px) {
     max-width: 100%; /* Das Karussell füllt den verfügbaren Platz auf kleineren Bildschirmen */
+    margin-left: 0; /* In der mobilen Ansicht wird kein seitlicher Abstand benötigt */
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 1.2em;
+    position: relative;
+    width: 100%;
+    margin-left: 0;
   }
 `;
 
@@ -162,7 +221,7 @@ const Image = styled.img`
   max-width: 100%; /* Das Bild passt sich der Größe des Karussells an */
 
   @media screen and (min-width: 321px) {
-    max-width: 50%; /* Hier kann die gewünschte Breite des Bildes auf kleineren Bildschirmen angepasst werden */
+    max-width: 100%; /* Hier kann die gewünschte Breite des Bildes auf kleineren Bildschirmen angepasst werden */
   }
 
   @media screen and (min-width: 768px) {
@@ -174,36 +233,28 @@ const SliderButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: auto;
   color: black;
-`;
-
-const SliderButton = styled.button`
-  width: 24px;
-  height: 24px;
-  background: black;
-  border: none;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-  outline: none;
-
-  ${(props) =>
-    props.active &&
-    `
-    background: white;
-  `}
 `;
 
 const Icon = styled.img`
   width: 39px; /* Ändere die Breite auf den gewünschten Wert */
   height: 30px; /* Ändere die Höhe auf den gewünschten Wert */
-  margin-right: 20px;
+  margin-right: 10px;
 
   @media screen and (max-width: 768px) {
-    width: 20px; /* Hier kann die gewünschte Breite angepasst werden */
-    height: 20px; /* Hier kann die gewünschte Höhe angepasst werden */
-    margin-right: 10px;
+    width: 30px;
+    height: 24px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 39px;
+    height: 30px;
+    margin-right: 20px;
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 1.2em;
+    margin-left: 10px;
   }
 `;
 
@@ -233,13 +284,7 @@ const ImageCarousel = ({ images }) => {
       </Carousel>
       <SliderButtonContainer>
         <PreviousButton onClick={handlePreviousSlide}>◀️</PreviousButton>
-        {images.map((_, index) => (
-          <SliderButton
-            key={index}
-            active={index === currentSlide}
-            onClick={() => setCurrentSlide(index)}
-          />
-        ))}
+
         <NextButton onClick={handleNextSlide}>▶️</NextButton>
       </SliderButtonContainer>
     </CarouselContainer>
@@ -274,11 +319,10 @@ const FourthSection = () => {
   const pages = [
     {
       title: "Routix KI Reiseplaner",
-      subTitle: "UX RESEARCH UI INTERFACE DESIGNE",
+      subTitle: "//UX RESEARCH //UI DESIGN //PRODUCT DESIGN ",
       text: "Dieses Projekt zielte darauf ab, eine innovative, KI-basierte Reiseplaner-App zu entwickeln, die es Nutzern ermöglicht, individuelle Reiserouten basierend auf ihren Interessen und ihrem Zeitplan zu erstellen. Ziel war es, den Prozess der Reiseplanung zu vereinfachen und gleichzeitig die Umwelt zu schonen, indem unnötige Reisen vermieden werden.",
       icons: ["/fig.svg", "/mj.svg", "/ps.svg", "/ai.svg"],
       images: [
-        "/1routix.svg",
         "/2routix.svg",
         "/3routix.svg",
         "/4routix.svg",
