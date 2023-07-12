@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Element, Link } from "react-scroll";
+import { Link } from "react-scroll";
 import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import FirstSection from "../components/FirstSection";
@@ -67,9 +67,7 @@ const HomePage = () => {
                 duration={500}
                 onClick={() => handlePageChange(1)}
                 className={currentPage === 1 ? "active" : ""}
-              >
-                Section 1
-              </Link>
+              ></Link>
             </li>
             <li>
               <Link
@@ -78,9 +76,7 @@ const HomePage = () => {
                 duration={500}
                 onClick={() => handlePageChange(2)}
                 className={currentPage === 2 ? "active" : ""}
-              >
-                Section 2
-              </Link>
+              ></Link>
             </li>
             <li>
               <Link
@@ -89,9 +85,7 @@ const HomePage = () => {
                 duration={500}
                 onClick={() => handlePageChange(3)}
                 className={currentPage === 3 ? "active" : ""}
-              >
-                Section 3
-              </Link>
+              ></Link>
             </li>
             <li>
               <Link
@@ -100,9 +94,7 @@ const HomePage = () => {
                 duration={500}
                 onClick={() => handlePageChange(4)}
                 className={currentPage === 4 ? "active" : ""}
-              >
-                Section 4
-              </Link>
+              ></Link>
             </li>
             <li>
               <Link
@@ -111,26 +103,16 @@ const HomePage = () => {
                 duration={500}
                 onClick={() => handlePageChange(5)}
                 className={currentPage === 5 ? "active" : ""}
-              >
-                Section 5
-              </Link>
+              ></Link>
             </li>
           </ul>
         </Navbar>
       </NavigationContainer>
 
-      <Element name="section1">
-        <FirstSection />
-      </Element>
-      <Element name="section2">
-        <SecondSection />
-      </Element>
-      <Element name="section3">
-        <ThirdSection />
-      </Element>
-      <Element name="section4">
-        <FourthSection />
-      </Element>
+      <FirstSection />
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection />
 
       <FiveSection />
     </Container>
