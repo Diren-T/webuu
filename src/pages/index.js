@@ -36,6 +36,13 @@ const Navbar = styled.nav`
   }
 `;
 
+const NavigationContainer = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 100;
+`;
+
 const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -49,6 +56,69 @@ const HomePage = () => {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Helmet>
       <Header />
+
+      <NavigationContainer>
+        <Navbar>
+          <ul>
+            <li>
+              <Link
+                to="section1"
+                smooth={true}
+                duration={500}
+                onClick={() => handlePageChange(1)}
+                className={currentPage === 1 ? "active" : ""}
+              >
+                Section 1
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="section2"
+                smooth={true}
+                duration={500}
+                onClick={() => handlePageChange(2)}
+                className={currentPage === 2 ? "active" : ""}
+              >
+                Section 2
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="section3"
+                smooth={true}
+                duration={500}
+                onClick={() => handlePageChange(3)}
+                className={currentPage === 3 ? "active" : ""}
+              >
+                Section 3
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="section4"
+                smooth={true}
+                duration={500}
+                onClick={() => handlePageChange(4)}
+                className={currentPage === 4 ? "active" : ""}
+              >
+                Section 4
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="section5"
+                smooth={true}
+                duration={500}
+                onClick={() => handlePageChange(5)}
+                className={currentPage === 5 ? "active" : ""}
+              >
+                Section 5
+              </Link>
+            </li>
+          </ul>
+        </Navbar>
+      </NavigationContainer>
+
       <Element name="section1">
         <FirstSection />
       </Element>
@@ -61,69 +131,8 @@ const HomePage = () => {
       <Element name="section4">
         <FourthSection />
       </Element>
-      <Element name="section5">
-        <FiveSection />
-      </Element>
 
-      <Navbar>
-        <ul>
-          <li>
-            <Link
-              to="section1"
-              smooth={true}
-              duration={500}
-              onClick={() => handlePageChange(1)}
-              className={currentPage === 1 ? "active" : ""}
-            >
-              Section 1
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="section2"
-              smooth={true}
-              duration={500}
-              onClick={() => handlePageChange(2)}
-              className={currentPage === 2 ? "active" : ""}
-            >
-              Section 2
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="section3"
-              smooth={true}
-              duration={500}
-              onClick={() => handlePageChange(3)}
-              className={currentPage === 3 ? "active" : ""}
-            >
-              Section 3
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="section4"
-              smooth={true}
-              duration={500}
-              onClick={() => handlePageChange(4)}
-              className={currentPage === 4 ? "active" : ""}
-            >
-              Section 4
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="section5"
-              smooth={true}
-              duration={500}
-              onClick={() => handlePageChange(5)}
-              className={currentPage === 5 ? "active" : ""}
-            >
-              Section 5
-            </Link>
-          </li>
-        </ul>
-      </Navbar>
+      <FiveSection />
     </Container>
   );
 };

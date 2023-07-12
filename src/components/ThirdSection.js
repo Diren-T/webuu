@@ -106,7 +106,9 @@ const ContentItem = styled.div`
     width: 24%;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 500px) {
+    /* Anpassung für iPhone SE */
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
   }

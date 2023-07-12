@@ -59,7 +59,7 @@ const Navbar = () => {
         <NavLink onClick={() => scrollToSection("section3")}>
           MOTIVATION
         </NavLink>
-        <NavLink onClick={() => scrollToSection("section4")}>PROJEKTE</NavLink>
+        <NavLink onClick={() => scrollToSection("section4")}>FICTION</NavLink>
         <NavLink onClick={() => scrollToSection("section5")}>KONTAKT</NavLink>
       </NavLinkContainer>
     </Nav>

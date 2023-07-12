@@ -128,11 +128,11 @@ const Title = styled.h1`
 const SubTitle = styled.h2`
   font-family: "Arial Black", sans-serif;
   text-align: left;
-  font-size: 1em;
+  font-size: 1.5em;
   margin-bottom: 3px;
 
   @media screen and (max-width: 768px) {
-    font-size: 1.2em;
+    font-size: 2em;
     margin-bottom: 40px;
   }
 
@@ -238,6 +238,11 @@ const PreviousImage = styled.img`
   width: 60px;
   height: 60px;
   margin-right: 20px; /* Hier kannst du den gewünschten Abstand einstellen */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @media screen and (min-width: 321px) {
     width: 30px;
@@ -246,8 +251,8 @@ const PreviousImage = styled.img`
   }
 
   @media screen and (min-width: 768px) {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     margin-right: 20px; /* Hier kannst du den gewünschten Abstand für größere Bildschirme einstellen */
   }
 `;
@@ -256,6 +261,11 @@ const NextImage = styled.img`
   width: 60px;
   height: 60px;
   margin-left: 20px; /* Hier kannst du den gewünschten Abstand einstellen */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @media screen and (min-width: 321px) {
     width: 30px;
@@ -264,8 +274,8 @@ const NextImage = styled.img`
   }
 
   @media screen and (min-width: 768px) {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     margin-left: 20px; /* Hier kannst du den gewünschten Abstand für größere Bildschirme einstellen */
   }
 `;
@@ -413,7 +423,7 @@ const FourthSection = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const handleNextPage = () => {
-    if (currentPage < 3) {
+    if (currentPage < 1) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -457,17 +467,21 @@ const FourthSection = () => {
     },
     // ... Weitere Seiten
     {
-      title: "Routix KI Reiseplaner",
-      subTitle: "UX RESEARCH UI INTERFACE DESIGNE",
-      text: "Dieses Projekt zielte darauf ab, eine innovative, KI-basierte Reiseplaner-App zu entwickeln, die es Nutzern ermöglicht, individuelle Reiserouten basierend auf ihren Interessen und ihrem Zeitplan zu erstellen. Ziel war es, den Prozess der Reiseplanung zu vereinfachen und gleichzeitig die Umwelt zu schonen, indem unnötige Reisen vermieden werden.",
-      icons: ["icon4.svg", "icon5.svg", "icon6.svg"],
+      title: "Oasis",
+      subTitle: "//UX RESEARCH //ARCHITECTURE ",
+      text: "Das Projekt Oasis vor der Kostbar wurde entwickelt, um einen einladenden und entspannenden Bereich vor der Kostbar auf dem Campus der Fachhochschule Dortmund zu schaffen. Der Fokus des Projekts liegt auf der Gestaltung eines angenehmen Ortes, an dem die Studierenden sich entspannen, lernen und eine Pause vom hektischen Studienalltag einlegen können.",
+      icons: ["ai.svg", "sketchup.svg", "archi.svg"],
       images: [
-        "/10routix.svg",
-        "/11routix.svg",
-        "/12routix.svg",
-        "/13routix.svg",
+        "/Oasis1.svg",
+        "/Oasis2.svg",
+        "/Oasis3.svg",
+        "/Oasis4.svg",
+        "/Oasis5.svg",
+        "/Oasis6.svg",
+        "/Oasis7.svg",
       ],
     },
+    // ... Weitere Seiten
   ];
 
   return (
