@@ -23,11 +23,15 @@ const SquaresBackground = styled.div`
 
 const Square = styled.div`
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 3px;
+  height: 3px;
   background-color: white;
   animation: squareAnimation 1.5s infinite;
   opacity: 0;
+
+  &.glow {
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+  }
 
   @keyframes squareAnimation {
     0% {
@@ -150,7 +154,7 @@ const generateRandomNumber = (min, max) => {
 
 const generateRandomSquares = () => {
   const squares = [];
-  const numberOfSquares = 80;
+  const numberOfSquares = 900;
 
   for (let i = 0; i < numberOfSquares; i++) {
     const randomTop = generateRandomNumber(0, 100);
