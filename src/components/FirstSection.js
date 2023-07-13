@@ -30,7 +30,7 @@ const SectionText1 = styled.p`
   color: #000;
   text-align: right;
   font-size: 7vw;
-  font-family: Arial Black;
+  font-family: "Anton", Arial Black, sans-serif;
   font-weight: 900;
   margin-top: 10vh;
   margin-bottom: 14vh;
@@ -76,7 +76,7 @@ const SectionText2 = styled.p`
   flex-shrink: 0;
   color: #000;
   font-size: 3vw;
-  font-family: Arial Black;
+  font-family: "Anton", Arial Black, sans-serif;
   margin-left: 7%;
   margin-top: 0vh;
 
@@ -119,7 +119,7 @@ const SectionText2Subtext = styled.span`
   flex-shrink: 0;
   color: #000;
   font-size: 3vw;
-  font-family: Arial Black;
+  font-family: "Anton", Arial Black, sans-serif;
   margin-top: 1vh;
 
   @media screen and (max-width: 768px) {

@@ -1,11 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Section = styled.section`
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Hinzufügen */
 `;
 
 const ContactInfo = styled.div`
@@ -40,6 +41,41 @@ const SocialIcon = styled.img`
   width: 30px;
   height: 30px;
 `;
+const BottomBar = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  z-index: 0;
+  overflow: hidden;
+`;
+
+const TextAnimation = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+`;
+
+const AnimatedText = styled.span`
+  display: inline-block;
+  color: black;
+  font-size: 24px;
+  font-family: "Arial Black", Arial, sans-serif;
+  animation: ${TextAnimation} 19s linear infinite;
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+
+  @media (max-width: 375px) {
+    font-size: 20px;
+    animation-duration: 10s;
+  }
+`;
 
 const FourthSection = () => {
   return (
@@ -61,6 +97,11 @@ const FourthSection = () => {
           </SocialIconLink>
         </SocialLinks>
       </ContactInfo>
+      <BottomBar>
+        <AnimatedText>
+          --- Keine Cookies. Deine Privatsphäre ist mir wichtig ---
+        </AnimatedText>
+      </BottomBar>
     </Section>
   );
 };
