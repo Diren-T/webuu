@@ -81,9 +81,7 @@ const FourthSection = () => {
   return (
     <Section id="section5">
       <ContactInfo>
-        <EmailLink href="mailto:deine-email@example.com">
-          diren@tikil.de
-        </EmailLink>
+        <EmailLink href="mailto:diren@tikil.de">diren@tikil.de</EmailLink>
         <PhoneNumber>Tel: +49 016095281093 </PhoneNumber>
         <SocialLinks>
           <SocialIconLink href="https://www.linkedin.com/in/diren-tikil/">
