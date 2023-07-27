@@ -30,7 +30,7 @@ const SectionText1 = styled.p`
   color: #000;
   text-align: right;
   font-size: 7vw;
-  font-family: "OpenSans";
+  font-family: "OpenSans", sans-serif;
   font-weight: 900;
   margin-top: 10vh;
   margin-bottom: 14vh;
