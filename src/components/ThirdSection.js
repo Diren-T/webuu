@@ -68,7 +68,7 @@ const Description = styled.p`
   color: white;
   text-align: center;
   font-size: 1.2rem;
-  font-family: Arial Black;
+  font-family: "OpenSans";
   transition: all 0.3s ease;
   transform: translateY(10px);
 
@@ -132,7 +132,7 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.h3`
-  font-family: Arial Black;
+  font-family: "OpenSans";
   text-align: center;
   font-size: 40px;
   font-weight: 700;

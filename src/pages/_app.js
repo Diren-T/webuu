@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
   @font-face {
-    font-family: 'OpenSans-Regular';
-    src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
+    font-family: 'OpenSans-Medium';
+    src: url('/fonts/OpenSans-Medium.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
   }
