@@ -75,6 +75,10 @@ const AnimatedText = styled.span`
     font-size: 15px;
     animation-duration: 10s;
   }
+  @media (max-width: 320px) {
+    font-size: 15px;
+    animation-duration: 10s;
+  }
 `;
 
 const FourthSection = () => {

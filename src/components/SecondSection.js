@@ -260,7 +260,7 @@ const SecondSection = () => {
                 <AdditionalText>{displayText}</AdditionalText>
               </InfoContainer>
               <AdditionalImageContainer>
-                <AdditionalImage src="/duft.png" alt="New Image" />
+                {/* <AdditionalImage src="/duft.png" alt="New Image" /> */}
               </AdditionalImageContainer>
             </>
           )}
