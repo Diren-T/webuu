@@ -16,7 +16,7 @@ const ContactInfo = styled.div`
 const EmailLink = styled.a`
   margin-bottom: 10px;
   display: block;
-  font-family: "Arial Black", Arial, sans-serif;
+  font-family: OpenSans;
   font-size: 20px;
   color: black;
   text-decoration: none;
@@ -65,7 +65,7 @@ const AnimatedText = styled.span`
   display: inline-block;
   color: black;
   font-size: 24px;
-  font-family: "Arial Black", Arial, sans-serif;
+  font-family: OpenSans;
   animation: ${TextAnimation} 19s linear infinite;
   position: absolute;
   right: 0;
