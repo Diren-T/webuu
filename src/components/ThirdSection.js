@@ -54,7 +54,7 @@ const ContentContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
-  max-width: 1200px;
+  max-width: 1000px; /* Beispiel: Breite reduzieren */
   padding: 20px;
   position: relative;
 

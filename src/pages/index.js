@@ -8,11 +8,14 @@ import ThirdSection from "../components/ThirdSection";
 import FourthSection from "../components/FourthSection";
 import styled from "styled-components";
 import FiveSection from "@/components/FiveSection";
+import Head from "next/head"; // Correct import statement for Head
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 1000px; /* Passen Sie diesen Wert entsprechend an */
+  margin: 0 auto; /* Damit wird der Container horizontal zentriert */
 `;
 
 const Navbar = styled.nav`
@@ -52,11 +55,12 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Helmet>
+      {/* Verwendung des Head-Tags */}
+      <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      </Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Header />
-
       <NavigationContainer>
         <Navbar>
           <ul>

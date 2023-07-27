@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
-  padding: 1rem;
+  padding: 0;
   z-index: 10;
   width: 100%;
 `;

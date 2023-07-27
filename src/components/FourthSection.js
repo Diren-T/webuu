@@ -8,9 +8,9 @@ const MainSection = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 50px;
-  max-width: 2000px; // Begrenzen der maximalen Breite der Hauptsektion
-  margin: 0 auto; // Zentrieren der Hauptsektion
+  padding: 50px; // Hier wird das Padding für den Abstand zum Rand festgelegt
+  max-width: 2000px;
+  margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     padding: 20px;

@@ -24,7 +24,7 @@ const EmailLink = styled.a`
 
 const PhoneNumber = styled.p`
   margin-bottom: 10px;
-  font-family: "Arial Black", Arial, sans-serif;
+  font-family: OpenSans;
   font-size: 20px;
 `;
 

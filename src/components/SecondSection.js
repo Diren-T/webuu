@@ -94,7 +94,7 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 100vh; /* Änderung: Höhe auf 100vh setzen */
   @media (min-width: 569px) {
     justify-content: space-between;
     align-items: flex-end;
