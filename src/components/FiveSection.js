@@ -76,7 +76,7 @@ const AnimatedText = styled.span`
     animation-duration: 10s;
   }
   @media (max-width: 320px) {
-    font-size: 15px;
+    font-size: 10px;
     animation-duration: 10s;
   }
 `;
