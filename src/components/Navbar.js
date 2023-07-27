@@ -31,7 +31,7 @@ const NavLink = styled.a`
   text-decoration: none;
   cursor: pointer;
   font-size: 20px;
-  font-family: "Arial Black", Arial, sans-serif;
+  font-family: OpenSans;
   font-weight: bold;
   padding: 0.2rem 0.8rem;
 
