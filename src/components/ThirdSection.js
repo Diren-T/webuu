@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Section = styled.section`
@@ -179,11 +179,17 @@ const generateRandomSquares = () => {
 };
 
 const ThirdSection = () => {
+  const [clientSide, setClientSide] = useState(false);
+
+  useEffect(() => {
+    setClientSide(true);
+  }, []);
+
   const squares = generateRandomSquares();
 
   return (
     <Section id="section3">
-      <SquaresBackground>{squares}</SquaresBackground>
+      <SquaresBackground>{clientSide && squares}</SquaresBackground>
       <ContentContainer>
         <ContentItem>
           <TitleContainer className="title-container">

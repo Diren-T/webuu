@@ -72,7 +72,7 @@ const AnimatedText = styled.span`
   white-space: nowrap;
 
   @media (max-width: 375px) {
-    font-size: 20px;
+    font-size: 15px;
     animation-duration: 10s;
   }
 `;
