@@ -66,18 +66,18 @@ const AnimatedText = styled.span`
   color: black;
   font-size: 24px;
   font-family: OpenSans;
-  animation: ${TextAnimation} 19s linear infinite;
+  animation: ${TextAnimation} 15s linear infinite;
   position: absolute;
   right: 0;
   white-space: nowrap;
 
   @media (max-width: 375px) {
     font-size: 15px;
-    animation-duration: 10s;
+    animation-duration: 6s;
   }
   @media (max-width: 320px) {
     font-size: 10px;
-    animation-duration: 10s;
+    animation-duration: 6s;
   }
 `;
 

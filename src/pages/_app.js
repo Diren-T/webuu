@@ -24,6 +24,18 @@ const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     font-style: normal;
   }
+  @font-face {
+    font-family: 'Silkscreen-Bold';
+    src: url('/fonts/Silkscreen-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ZillaSlabHighlight-Bold';
+    src: url('/fonts/ZillaSlabHighlight-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
   /* Hier kannst du weitere @font-face-Regeln für andere Schriftarten hinzufügen */
 
   body {
