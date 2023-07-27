@@ -40,7 +40,7 @@ const TextContainer = styled.div`
 const Title = styled.h2`
   color: #030305;
   font-size: 2rem;
-  font-family: Arial Black;
+  font-family: "OpenSans", sans-serif;
   font-weight: 900;
   @media (max-width: 768px) {
     text-align: center;
@@ -51,7 +51,7 @@ const Title = styled.h2`
 const Description = styled.p`
   color: #030305;
   font-size: 1.2rem;
-  font-family: Arial;
+  font-family: "OpenSans-Medium", sans-serif;
   font-weight: 900;
   @media (max-width: 768px) {
     text-align: center;
@@ -70,7 +70,7 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
   color: #000;
-  font-family: Arial, sans-serif;
+  font-family: "OpenSans-Medium", sans-serif;
   font-size: 1.2rem; /* Standard-Schriftgröße */
   padding: 10px 20px;
   border: none;
@@ -134,7 +134,7 @@ const BackButton = styled(Button)`
 const AdditionalText = styled.div`
   color: #030305;
   font-size: 1.2rem;
-  font-family: Arial;
+  font-family: "OpenSans-Medium", sans-serif;
   font-weight: 900;
   margin-top: 20px;
   text-align: center;
