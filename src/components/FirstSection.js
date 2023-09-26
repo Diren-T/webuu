@@ -1,169 +1,229 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
 
 const Section = styled.section`
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+  background-color: #f7f7f7;
+  position: relative;
+  transform: ${({ isShifted }) => (isShifted ? "translateY(-50%)" : "none")};
+  transition: transform 0.3s ease;
 
-const FirstSection = styled(Section)`
-  background-image: url("/path/to/your/image.jpg");
-  background-size: cover;
-  background-position: center;
-  text-align: right;
-  flex-direction: row;
-  flex-wrap: wrap;
+  @media (min-width: 569px) {
+    flex-direction: row;
+    transform: ${({ isShifted }) => (isShifted ? "translateX(-50%)" : "none")};
+    transition: transform 0.3s ease;
+  }
 
-  @media screen and (max-width: 1024px) {
-    flex-direction: column;
+  @media (max-width: 320px) {
+    transform: ${({ isShifted }) => (isShifted ? "translateX(-100%)" : "none")};
+    transition: transform 0.5s ease;
   }
 `;
 
-const SectionText1 = styled.p`
+const TextContainer = styled.div`
+  flex: 1;
   display: flex;
-  width: 50%;
-  height: auto;
   flex-direction: column;
-  flex-shrink: 0;
-  color: #000;
-  text-align: right;
-  font-size: 7vw;
-  font-family: "OpenSans", sans-serif;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  @media (min-width: 569px) {
+    align-items: flex-start;
+    padding: 0 50px;
+  }
+`;
+
+const Title = styled.h2`
+  color: #030305;
+  font-size: 2rem;
+  font-family: OpenSans;
   font-weight: 900;
-  margin-top: 10vh;
-  margin-bottom: 14vh;
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+`;
 
-  @media screen and (max-width: 1024px) {
-    font-size: 10vw;
-    width: 80%;
-    margin-top: 5vh;
-    margin-bottom: 1vh;
+const Description = styled.p`
+  color: #030305;
+  font-size: 1.2rem;
+  font-family: OpenSans-Medium;
+  font-weight: 900;
+  @media (max-width: 768px) {
     text-align: center;
   }
+`;
 
-  @media screen and (max-width: 768px) {
-    font-size: 12vw;
-    width: 90%;
-    margin-top: 5vh;
-    margin-bottom: 1vh;
-    text-align: center;
+const Button = styled.button`
+  color: #030305;
+  font-size: 1rem;
+  font-family: "OpenSans";
+  font-weight: 900;
+  margin-top: 20px;
+  text-align: center;
+  width: auto; // Ändere die width-Eigenschaft auf "auto"
+  background-color: transparent;
+  border-color: black;
+  padding: 5px 15px;
+  border-radius: 40px; // Hinzugefügte Abgerundete Ecken
+  cursor: pointer;
+  opacity: 50%;
+  @media (min-width: 569px) {
+    margin-top: 0;
+    margin-left: 20px;
+    text-align: left;
+    width: auto;
   }
+`;
 
-  @media screen and (max-width: 480px) {
-    font-size: 10vw;
-    width: 95%;
-    margin-top: 5vh;
-    margin-bottom: vh;
-    text-align: center;
+const ContentContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 569px) {
+    flex-direction: row;
   }
+`;
 
-  @media screen and (max-width: 320px) {
-    font-size: 20vw;
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 569px) {
+    align-items: flex-start;
+  }
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  @media (min-width: 569px) {
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100vh;
+  }
+`;
+
+const floatAnimation = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+`;
+
+const Image = styled.img`
+  max-width: 100%;
+  height: auto;
+  animation: ${floatAnimation} 14s ease-in-out infinite;
+
+  @media (min-width: 769px) {
+    max-height: 90vh;
+  }
+  @media (max-width: 320px) {
+    max-height: 100px;
+  }
+  @media (min-width: 321px) and (max-width: 375px) {
+    max-height: 100%;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    max-height: unset;
+  }
+`;
+
+const AdditionalImageContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 20vh;
+  width: 490%;
+  @media (max-width: 768px) {
+    height: auto;
     width: 100%;
-    margin-top: 2vh;
-    margin-bottom: 1vh;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
-const SectionText2 = styled.p`
-  text-align: left;
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  flex-shrink: 0;
-  color: #000;
-  font-size: 3vw;
-  font-family: "OpenSans", sans-serif;
-  margin-left: 7%;
-  margin-top: 0vh;
-
-  @media screen and (max-width: 1024px) {
-    font-size: 5vw;
-    margin-top: 1vh;
-    margin-left: 0;
-    align-items: center;
-    text-align: center;
+const AdditionalImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  @media (max-width: 320px) {
+    max-height: 150px;
   }
-
-  @media screen and (max-width: 768px) {
-    font-size: 7vw;
-    margin-top: 2vh;
-    margin-left: 0;
-    align-items: center;
-    text-align: center;
+  @media (min-width: 321px) and (max-width: 375px) {
+    max-height: 200px;
   }
-
-  @media screen and (max-width: 480px) {
-    font-size: 6vw;
-    margin-top: 3vh;
-    margin-left: 0;
-    align-items: center;
-    text-align: center;
-  }
-
-  @media screen and (max-width: 320px) {
-    font-size: 11vw;
-    margin-top: 1vh;
-    margin-left: 0;
-    align-items: center;
-    text-align: center;
+  @media (min-width: 376px) {
+    max-height: 250px;
   }
 `;
 
-const SectionText2Subtext = styled.span`
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  color: #000;
-  font-size: 3vw;
-  font-family: "OpenSans", sans-serif;
-  margin-top: 1vh;
+const SecondSection = () => {
+  const [isShifted, setShifted] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [displayText, setDisplayText] = useState("");
 
-  @media screen and (max-width: 768px) {
-    font-size: 5vw;
-    margin-top: 1vh;
-    align-items: center;
-    text-align: center;
-  }
+  const handleExpandButtonClick = () => {
+    setIsExpanded(!isExpanded);
 
-  @media screen and (max-width: 480px) {
-    font-size: 6vw;
-    margin-top: 1vh;
-    align-items: center;
-    text-align: center;
-  }
+    if (!isExpanded) {
+      setDisplayText(
+        "Architektur und UX-Design sind für mich wie zwei Seiten derselben Medaille. Mein Architekturstudium bereichert meine Arbeit im UX/UI-Design, indem es die Kunst der Raumgestaltung auf digitale Erlebnisse überträgt.."
+      );
+    } else {
+      setDisplayText("");
+    }
+  };
 
-  @media screen and (max-width: 320px) {
-    font-size: 3vw;
-    margin-top: 1vh;
-    align-items: center;
-    text-align: center;
-  }
-`;
+  const handleBackButtonClick = () => {
+    setShifted(false);
+    setDisplayText("");
+  };
 
-const FirstSectionComponent = () => {
   return (
-    <FirstSection id="section1">
-      <SectionText1>
-        Mein
-        <br />
-        Ziel
-        <br />
-        ist es
-      </SectionText1>
-      <SectionText2>
-        ansprechende <br />
-        Benutzererlebnisse
-        <SectionText2Subtext>
-          nutzerzentriertes
-          <br /> Design
-        </SectionText2Subtext>
-      </SectionText2>
-    </FirstSection>
+    <>
+      <Section id="section2" isShifted={isShifted}>
+        <TextContainer>
+          <Title>DIREN TIKIL</Title>
+          <Description>
+            {displayText ||
+              "Mein Architekturhintergrund prägt meine Herangehensweise an UX-Design."}
+          </Description>
+          {/* {isExpanded ? (
+            <Button onClick={handleExpandButtonClick}>x</Button>
+          ) : (
+            <Button onClick={handleExpandButtonClick}>mehr</Button>
+          )} */}
+        </TextContainer>
+
+        <ContentContainer>
+          <ImageContainer>
+            <Image src="/diren.png" alt="Image" />
+          </ImageContainer>
+          {isShifted && (
+            <>
+              <InfoContainer></InfoContainer>
+              <AdditionalImageContainer>
+                {/* ... (additional image) */}
+              </AdditionalImageContainer>
+            </>
+          )}
+        </ContentContainer>
+      </Section>
+    </>
   );
 };
 
-export default FirstSectionComponent;
+export default SecondSection;
