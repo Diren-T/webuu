@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -19,7 +19,7 @@ const NavLinkContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  max-width: 800px; /* Anpassung der maximalen Breite des Containers */
+  max-width: 800px;
 
   @media (max-width: 768px) {
     flex-wrap: wrap;
@@ -34,14 +34,15 @@ const NavLink = styled.a`
   font-family: OpenSans;
   font-weight: bold;
   padding: 0.2rem 0.8rem;
+  transition: filter 1s ease; /* Überblenden des Filters */
 
   &:hover {
     color: #e0e258;
+    filter: blur(5px); /* Blur-Effekt bei Hover */
   }
 
   @media (max-width: 768px) {
     font-size: 12px;
-
     margin: 0.1rem 0rem;
   }
 `;
@@ -65,5 +66,4 @@ const Navbar = () => {
     </Nav>
   );
 };
-
 export default Navbar;

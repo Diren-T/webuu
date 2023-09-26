@@ -57,6 +57,8 @@ const ContentContainer = styled.div`
   max-width: 1000px; /* Beispiel: Breite reduzieren */
   padding: 20px;
   position: relative;
+  opacity: 1; /* Stellen Sie die Opazität auf 1 ein, um den Container sichtbar zu machen */
+  pointer-events: auto; /* Aktivieren Sie Pointer-Ereignisse, um Interaktionen zuzulassen */
 
   @media (max-width: 768px) {
     gap: 30px;
@@ -64,7 +66,6 @@ const ContentContainer = styled.div`
 `;
 
 const Description = styled.p`
-  opacity: 0;
   color: white;
   text-align: center;
   font-size: 1.2rem;
@@ -86,20 +87,8 @@ const ContentItem = styled.div`
   justify-content: center;
   position: relative;
   z-index: 1;
-  transition: all 0.3s ease;
   width: 100%;
   margin-bottom: 20px;
-
-  &:hover {
-    .title-container {
-      justify-content: flex-start;
-    }
-
-    ${Description} {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   @media (min-width: 768px) {
     width: 50%;
@@ -122,13 +111,6 @@ const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-grow: 1;
-
-  &:hover {
-    .title {
-      color: white;
-      -webkit-text-stroke-color: white;
-    }
-  }
 `;
 
 const Title = styled.h3`
@@ -137,14 +119,16 @@ const Title = styled.h3`
   font-size: 40px;
   font-weight: 700;
   line-height: 121%;
-  color: transparent;
-  -webkit-text-stroke: 2px white;
+  color: white;
+  // -webkit-text-stroke: 2px white;
   margin-left: 10px;
   align-self: flex-start;
   transition: all 0.3s ease;
 
-  &:hover {
-    transform: skewX(-20deg);
+  // &:hover {
+  //   transform: skewX(-20deg);
+  //   color: white;
+  //   -webkit-text-stroke-color: white;
   }
 `;
 
@@ -154,7 +138,7 @@ const generateRandomNumber = (min, max) => {
 
 const generateRandomSquares = () => {
   const squares = [];
-  const numberOfSquares = 900;
+  const numberOfSquares = 200;
 
   for (let i = 0; i < numberOfSquares; i++) {
     const randomTop = generateRandomNumber(0, 100);

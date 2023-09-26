@@ -3,6 +3,7 @@
 import React from "react";
 import App from "next/app";
 import styled, { createGlobalStyle } from "styled-components";
+import { useRouter } from "next/router"; // Next.js Router verwenden
 
 const GlobalStyle = createGlobalStyle`
   /* Roboto-Bold.ttf liegt im öffentlichen Ordner unter /fonts/ */

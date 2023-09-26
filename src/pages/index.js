@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import FirstSection from "../components/FirstSection";
-import SecondSection from "../components/SecondSection";
+
 import ThirdSection from "../components/ThirdSection";
 import FourthSection from "../components/FourthSection";
 import styled from "styled-components";
@@ -69,7 +69,7 @@ const HomePage = () => {
                 className={currentPage === 1 ? "active" : ""}
               ></Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="section2"
                 smooth={true}
@@ -77,7 +77,7 @@ const HomePage = () => {
                 onClick={() => handlePageChange(2)}
                 className={currentPage === 2 ? "active" : ""}
               ></Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="section3"
@@ -110,7 +110,7 @@ const HomePage = () => {
       </NavigationContainer>
 
       <FirstSection />
-      <SecondSection />
+      {/* <SecondSection /> */}
       <ThirdSection />
       <FourthSection />
 
